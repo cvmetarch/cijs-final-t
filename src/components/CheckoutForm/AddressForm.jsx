@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
-import { useForm, FormProvider } from 'react-hook-form';
+import { InputLabel, Select, MenuItem, Button, Grid, Typography, TextField } from '@material-ui/core';
+import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { commerce } from '../../lib/commerce';
 
-import FormInput from './CustomTextField';
-
-const AddressForm = ({ checkoutToken, test}) => {
+const AddressForm = ({ checkoutToken, test }) => {
     const [shippingCountries, setShippingCountries] = useState([]);
     const [shippingCountry, setShippingCountry] = useState('');
     const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -15,6 +13,9 @@ const AddressForm = ({ checkoutToken, test}) => {
     const [shippingOptions, setShippingOptions] = useState([]);
     const [shippingOption, setShippingOption] = useState('');  
     const methods = useForm();
+    const { register, handleSubmit } = methods;
+
+    {/*test({ ...data, shippingCountry, shippingSubdivision, shippingOption })*/}
 
     const fetchShippingCountries = async (checkoutTokenId) => {
         const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
@@ -54,14 +55,14 @@ const AddressForm = ({ checkoutToken, test}) => {
         <>
             <Typography variant="h6" gutterBottom>Thông tin nhận hàng</Typography>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit((data) => test({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
-                    <Grid container spacing={3}>                        
-                        <FormInput required name="lastName" label="Họ" />
-                        <FormInput required name="firstName" label="Tên" />                        
-                        <FormInput required name="address1" label="Địa chỉ" />
-                        <FormInput required name="email" label="Email" />
-                        <FormInput required name="city" label="Tỉnh/Thành phố" />
-                        <FormInput required name="zip" label="Zip / Mã bưu điện" />
+                <form onSubmit={handleSubmit((data) => console.log({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}><TextField required label='Họ' {...register("lastName")} /></Grid>
+                        <Grid item xs={12} sm={6}><TextField required label='Tên' {...register("firstName")} /></Grid>
+                        <Grid item xs={12} sm={6}><TextField required label='Địa chỉ' {...register("address1")} /></Grid>
+                        <Grid item xs={12} sm={6}><TextField required label='Email' {...register("email")} /></Grid>
+                        <Grid item xs={12} sm={6}><TextField required label='Quận / Huyện' {...register("city")} /></Grid>
+                        <Grid item xs={12} sm={6}><TextField required label='ZIP / Mã bưu điện' {...register("zip")} /></Grid>
                         <Grid item xs={12} sm={6}>
                             <InputLabel>Quốc gia</InputLabel>
                             <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
@@ -73,7 +74,7 @@ const AddressForm = ({ checkoutToken, test}) => {
                             </Select>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <InputLabel>Shipping Subdivision</InputLabel>
+                            <InputLabel>Tỉnh / Thành phố</InputLabel>
                             <Select value={shippingSubdivision} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
                                 {Object.entries(shippingSubdivisions).map(([code, name]) => ({ id: code, label: name })).map((item) => (
                                     <MenuItem key={item.id} value={item.id}>
@@ -83,7 +84,7 @@ const AddressForm = ({ checkoutToken, test}) => {
                             </Select>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <InputLabel>Shipping Options</InputLabel>
+                            <InputLabel>Giao hàng</InputLabel>
                             <Select value={shippingOption} fullWidth onChange={(e) => setShippingOption(e.target.value)}>
                                 {shippingOptions.map((sO) => ({ id: sO.id, label: `${sO.description} - (${sO.price.formatted}đ)` })).map((item) => (
                                     <MenuItem key={item.id} value={item.id}>
@@ -91,17 +92,21 @@ const AddressForm = ({ checkoutToken, test}) => {
                                     </MenuItem>
                                 ))}
                             </Select>
-                        </Grid>
+                        </Grid>                     
                     </Grid>
                     <br />
+                    
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Button component={Link} variant="outlined" to="/cart">Trở lại Giỏ hàng</Button>
                         <Button type="submit" variant="contained" color="primary">Tiếp tục</Button>
                     </div>
                 </form>
             </FormProvider>
-        </>
-    );
+        </>);
+        {/*            
+                        
+                        
+                ;*/}
 }
 
 export default AddressForm;
