@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CssBaseline, Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
+import { CssBaseline, Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaselines } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { commerce } from '../../../lib/commerce';
@@ -37,41 +37,33 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
     const test = (data) => {
         setShippingData(data);
-        console.log(data);
+ 
         nextStep();
     };
 
-    let Confirmation = () => (order.customer ? (
+    let Confirmation = () => order.customer ? (
         <>
-            <div>
-                <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}!</Typography>
-                <Divider className={classes.divider} />
-                <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
-            </div>
-            <br />
-            <Button component={Link} variant="outlined" type="button" to="/">Về trang chủ</Button>
+        <CssBaseline />
+        <div>
+            <Typography variant="h5">Cảm ơn bạn đã mua hàng, {order.customer.firstname} {order.customer.lastname}!</Typography>
+            {/* { error && <Typography variant="subtitle2">Test mode Credit Card</Typography>} */}
+            <Divider className={classes.divider} />
+            <Typography variant="subtitle2">Mã đơn hàng: {order.customer_reference}</Typography>
+            <Typography variant="subtitle2">Email xác nhận đơn hàng đã được gửi đến bạn!</Typography>
+        </div>
+        <br />
+        <Button component={Link} variant="outlined" type="button" to="/">Về trang chủ</Button>
         </>
-    ) : (<div>Co cl</div>));
-        {/*<div className={classes.spinner}>
+    ) : (
+        <div className={classes.spinner}>
             <CircularProgress />
         </div>
-    ));*/}
-
-    if (error) {
-        Confirmation = () => (<div>Co cl2</div>)}
-            {/*<>
-                <Typography variant="h5">Error: {error}</Typography>
-                <br />
-                <Button component={Link} variant="outlined" type="button" to="/">Về trang chủ</Button>
-            </>
-        );
-    }*/}
-
+    )
+    
     const Form = () => (activeStep === 0
         ? <AddressForm checkoutToken={checkoutToken} nextStep={nextStep} test={test} />
-        : <div>Payment Form</div>);
-        {/*<PaymentForm checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} shippingData={shippingData} onCaptureCheckout={onCaptureCheckout} />
-        );*/}
+        : <PaymentForm checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} shippingData={shippingData} onCaptureCheckout={onCaptureCheckout} />
+        );
 
     return (
         <>

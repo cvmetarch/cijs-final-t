@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { InputLabel, Select, MenuItem, Button, Grid, Typography, TextField } from '@material-ui/core';
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { commerce } from '../../lib/commerce';
@@ -55,7 +55,7 @@ const AddressForm = ({ checkoutToken, test }) => {
         <>
             <Typography variant="h6" gutterBottom>Thông tin nhận hàng</Typography>
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit((data) => console.log({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
+                <form onSubmit={handleSubmit((data) => test({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}><TextField required label='Họ' {...register("lastName")} /></Grid>
                         <Grid item xs={12} sm={6}><TextField required label='Tên' {...register("firstName")} /></Grid>
