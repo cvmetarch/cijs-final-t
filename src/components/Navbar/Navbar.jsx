@@ -1,9 +1,14 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Badge, Typography } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { Link, useLocation } from 'react-router-dom';
 
-import Navbarr from '../Navbarr.js';
+import {Search} from '@material-ui/icons';
+
+import { menuItemsList } from './menuItemsList';
+import MenuItems from './MenuItems';
+
+// import Navbarr from '../Navbarr.js';
 
 import logo from "../../assets/commerce.png";
 import useStyles from "./styles";
@@ -15,13 +20,28 @@ const Navbar = ({ totalItems }) => {
     return (
         <>
             <AppBar position="fixed" className={classes.appBar} color="inherit">
-                <Toolbar>
+                <Toolbar>                    
                     <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
                         <img src={logo} alt="Commerce.js" height="45px" className={classes.image} />
                     </Typography> 
 
-                    <Navbarr />
+                    {/* <Navbarr /> */}
+                    <nav>
+                        <ul className="menus">
+                            {menuItemsList.map((menu, index) => {
+                                const depthLevel = 0;
+                                return (
+                                    <MenuItems items={menu} key={index} depthLevel={depthLevel} />
+                                );
+                            })}
+                        </ul>
+                    </nav>
 
+
+                    <div className={classes.searchBox}>
+                        <input style={{border: 0}} type="text" placeholder="Tìm kiếm..." />
+                        <a href="/"><Search/></a>
+                    </div>
                     <div className={classes.grow} />
                     {location.pathname !== '/cart' && (
                     <div className={classes.button}>

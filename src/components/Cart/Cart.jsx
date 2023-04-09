@@ -8,8 +8,8 @@ import useStyles from "./styles";
 const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) => {
     const classes = useStyles();
     const EmptyCart = () => (
-        <Typography variant="subtitle1">Giỏ hàng trống, 
-            <Link className={classes.link} to="/"> hãy chọn một vài sản phẩm nhé!</Link>
+        <Typography style={{textAlign:'center'}} variant="subtitle1">Giỏ hàng trống, 
+            <Link className={classes.link} to="../product"> hãy chọn một vài sản phẩm nhé!</Link>
         </Typography>
     );
 

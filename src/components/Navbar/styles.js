@@ -17,6 +17,16 @@ export default makeStyles((theme) => ({
         display: 'flex',
         textDecoration: 'none',
     },
+
+    searchBox: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '5px 10px 5px 10px',
+        borderRadius: theme.shape.borderRadius,
+        border: '1px solid black',        
+    },
+
     image: {
         marginRight: '10px',
     },

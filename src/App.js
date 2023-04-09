@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import { Typography } from "@material-ui/core";
-import { Products, Navbar, Cart, Checkout } from './components';
+import { Products, Navbar, Cart, Checkout, Footer } from './components';
 import { commerce } from './lib/commerce';
 
-import Layout from './components/Layout';
+import Layout from './routes/Layout';
 import Home from './routes/Home';
 import Any from './routes/Any'; 
 
@@ -86,7 +86,7 @@ const App = () => {
           <Route path='kt-phongthuy' element={<Any routingPage="KIẾN THỨC PHONG THỦY" />} />   
           <Route path='kt-phatgiao' element={<Any routingPage="KIẾN THỨC PHẬT GIÁO" />} />   
           <Route path='kt-trangsuc' element={<Any routingPage="KIẾN THỨC VỀ TRANG SỨC" />} />   
-          <Route path='kt-tintuc' element={<Any routingPage="TIN TỨC" />} />   
+          <Route path='tintuc' element={<Any routingPage="TIN TỨC" />} />   
 
           <Route path="saleoff" element={<Products routingLevel='1' routingName="SALE OFF" products={products} onAddToCart={handleAddToCart} />} />
           <Route exact path="product" element={<Products routingLevel='1' routingName="BỘ SƯU TẬP" products={products} onAddToCart={handleAddToCart}/>}/>
@@ -94,7 +94,15 @@ const App = () => {
           
           <Route path="trangsuc" element={<Products routingLevel='1' routingName="TRANG SỨC" products={products} onAddToCart={handleAddToCart} />} />
           <Route path="ts-nam" element={<Products routingName="TRANG SỨC BẠC THÁI NAM" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="nhannam" element={<Products routingName="NHẪN NAM BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="lactaynam" element={<Products routingName="LẮC TAY NAM BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="matdaynam" element={<Products routingName="MẶT DÂY CHUYỀN NAM BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="daychuyennam" element={<Products routingName="DÂY CHUYỀN NAM BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          
           <Route path="ts-nu" element={<Products routingName="TRANG SỨC BẠC THÁI NỮ" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="nhannu" element={<Products routingName="NHẪN NỮ BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="lactaynu" element={<Products routingName="LẮC TAY NỮ BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="matdaynu" element={<Products routingName="MẶT DÂY CHUYỀN NỮ BẠC THÁI" products={products} onAddToCart={handleAddToCart} />} />
           <Route path="ts-daquy" element={<Products routingName="TRANG SỨC ĐÁ QUÝ" products={products} onAddToCart={handleAddToCart} />} />
           <Route path="ts-bacta" element={<Products routingName="TRANG SỨC BẠC TA" products={products} onAddToCart={handleAddToCart} />} />
           
@@ -113,13 +121,17 @@ const App = () => {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Typography className={classes.title} variant="h3" gutterBottom>
-                Trang không tồn tại.<br /> <br /> 
-                <a href='/'>Về trang chủ</a>
+                Danh mục sản phẩm đang cập nhật.<br /> <br /> 
+                <Link className={classes.link} to="/">
+                  Về trang chủ
+                </Link>
               </Typography>              
             </main >
-        } />4
+        } />
         </Route>
-      </Routes>        
+      </Routes>
+      <Footer/>
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export const menuItems = [
+export const menuItemsList = [
     {
         title: 'TRANG CHỦ',
         url: '/',
