@@ -9,7 +9,7 @@ import Layout from './routes/Layout';
 import Home from './routes/Home';
 import Any from './routes/Any'; 
 
-import useStyles from "./components/Products/styles";
+import useStyles from "./styles";
 
 const App = () => {
   const classes = useStyles(); 

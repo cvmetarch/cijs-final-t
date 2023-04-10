@@ -19,28 +19,31 @@ export default makeStyles((theme) => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing(3),
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     midContainer : {
-    width: '100%',
-    height: 'max-content',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: '15px',
-    paddingTop: '15px',
-    position: 'relative',
+        width: '100%',
+        height: 'max-content',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: '15px',
+        paddingTop: '15px',
+        position: 'relative',
     },
 
     bottomContainer: {
         display: 'flex',
         flexDirection: 'column',
-        alignItem: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',        
     },
 
     preFooter: {
-        width: '80',
+        width: '100%',
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         marginBottom: '15px',
@@ -49,12 +52,25 @@ export default makeStyles((theme) => ({
         padding: '10px 0 0 0',
     },
 
-    ban3: {
-        display: 'flex',
+    newsReview: {
         width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        border: 'solid 1px gray',
+        marginBottom: '15px',
+        borderTop: '1px solid gray',
+        padding: '15px 0 15px 0',
+        position: 'relative',        
+    },
+
+    overLay: {
+        position: 'absolute',        
+        opacity: '0%',
+        bottom: '5%',
+        backgroundColor: 'white',
+        border: '1px solid darkblue',
+        color: 'darkblue',
+        fontWeight: 'bold',
+        borderRadius: '5px',
+        padding: '5px',
+        textAlign: 'center',
     },
 
     abLeft: {
@@ -74,6 +90,5 @@ export default makeStyles((theme) => ({
         width: '80%',
         transform: 'translate(-50%, -50%)',
     },
-
 
 }));

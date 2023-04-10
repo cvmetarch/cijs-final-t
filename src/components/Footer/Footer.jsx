@@ -1,7 +1,11 @@
 import React from "react";
 import { AppBar } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 import useStyles from "./styles";
 
+import facebook from "../../assets/fb-banner.png";
+import youtube from "../../assets/VCB-OUTRO-FN.00_00_00_00.Still001-1024x576.png";
+import shopee from "../../assets/banner-shopep-vcb-1024x528.png";
 import bct from "../../assets/logoSaleNoti.png";
 
 const Footer = () => {
@@ -9,6 +13,40 @@ const Footer = () => {
 
     return (
         <>
+            <div className={classes.content}>
+                <section style={{ width: '80%', display: 'flex', justifyContent: 'center' }}>
+                    <div className={classes.preFooter}>
+                        <nav>
+                            <h4>FANPAGE</h4>
+                            <div className={classes.ban3}>
+                                <Link to="https://fb.com/chanhdeptrai">
+                                    <img width="100%" height="100%" src={facebook} alt=""
+                                        sizes="(max-width: 1020px) 100vw, 1020px" />
+                                </Link>
+                            </div>
+                        </nav>
+                        <nav>
+                            <h4>YOUTUBE</h4>
+                            <div className={classes.ban3}>
+                                <Link to="https://fb.com/chanhdeptrai">
+                                    <img width="100%" height="100%" src={youtube} alt=""
+                                        sizes="(max-width: 1020px) 100vw, 1020px" />
+                                </Link>
+                            </div>
+                        </nav>
+                        <nav>
+                            <h4>SHOPEE</h4>
+                            <div className={classes.ban3}>
+                                <Link to="https://fb.com/chanhdeptrai">
+                                    <img width="100%" height="100%" src={shopee} alt=""
+                                        sizes="(max-width: 1020px) 100vw, 1020px" />
+                                </Link>
+                            </div>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+
             <AppBar position="relative" className={classes.appBar} color="inherit">
                 <header className={classes.footer}>
                     <ul className={classes.ul} >

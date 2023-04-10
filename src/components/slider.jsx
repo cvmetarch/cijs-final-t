@@ -11,7 +11,7 @@ function ReactSimplyCarouselExample() {
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     return (
-        <div style={{ marginBottom: '5%' }}>
+        <div style={{ width: '100%', marginTop: '5%', marginBottom: '2.5%' }}>
             <ReactSimplyCarousel
                 activeSlideIndex={activeSlideIndex}
                 onRequestChange={setActiveSlideIndex}
@@ -63,23 +63,23 @@ function ReactSimplyCarouselExample() {
             >
                 {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
                 <Link to="product">
-                    <div style={{ backgroundSize: 'cover', width: '65vw', height: 350, backgroundImage: `url(${ban1})` }}>                    
+                    <div style={{ backgroundSize: 'cover', width: '90vw', height: '60vh', backgroundImage: `url(${ban1})` }}>                    
                     </div>
                 </Link>
                 <Link to="product">
-                    <div style={{ backgroundSize: 'cover', width: '65vw', height: 350, backgroundImage: `url(${ban2})` }}>
+                    <div style={{ backgroundSize: 'cover', width: '90vw', height: '60vh', backgroundImage: `url(${ban2})` }}>
                     </div>
                 </Link>
                 <Link to="product">
-                    <div style={{ backgroundSize: 'cover', width: '65vw', height: 350, backgroundImage: `url(${ban3})` }}>
+                    <div style={{ backgroundSize: 'cover', width: '90vw', height: '60vh', backgroundImage: `url(${ban3})` }}>
                     </div>
                 </Link>
                 <Link to="product">
-                    <div style={{ backgroundSize: 'cover', width: '65vw', height: 350, backgroundImage: `url(${ban4})` }}>
+                    <div style={{ backgroundSize: 'cover', width: '90vw', height: '60vh', backgroundImage: `url(${ban4})` }}>
                     </div>
                 </Link>
                 <Link to="product">
-                    <div style={{ backgroundSize: 'cover', width: '65vw', height: 350, backgroundImage: `url(${ban5})` }}>
+                    <div style={{ backgroundSize: 'cover', width: '90vw', height: '60vh', backgroundImage: `url(${ban5})` }}>
                     </div>                
                 </Link>
             </ReactSimplyCarousel>
